@@ -1,0 +1,125 @@
+.profile__summary {
+    background-color: $background;
+    min-height: 70vh;
+}
+.summary__row {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+.avatar-upload {
+    margin-top: 5vh;
+    max-width: 205px;
+    padding-left: 35%;
+}
+.gridItem .name {
+    font-size: $very-large-font-size;
+    font-family: $font-family-base;
+    color: #ffffff;
+    line-height: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.gridItem .username {
+    font-size: $large-font-size;
+    font-family: $font-family-base;
+    color: $blue;
+    display: flex;
+    justify-content: center;
+}
+
+.gridItem .location {
+    font-size: $medium-font-size;
+    font-family: $font-family-base;
+    color: $light-blue;
+    line-height: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-upload .avatar-preview {
+    width: 160px;
+    height: 155px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid $blue;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.profile__avatar {
+    width: 148px;
+    height: 143px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.flex__container {
+    display: flex;
+    justify-content: space-evenly;
+}
+.flex__section {
+    display: flex;
+    flex-direction: column;
+    background-color: $light-background;
+    color: white;
+    padding: 3% 8%;
+    border-radius: 2%;
+}
+.flex-element {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: $font-family-base;
+    font-size: $very-large-font-size;
+}
+
+.flex-item {
+    font-family: $font-family-base;
+    font-size: $small-font-size;
+    color: $light-blue;
+}
+
+@media only screen and (max-width: 900px) {
+    .summary__row {
+        grid-template-columns: 30% 40% 30%;
+    }
+    .avatar-upload {
+        padding-left: 15%;
+    }
+    .flex__container {
+        justify-content: space-evenly;
+    }
+    .flex__section {
+        padding: 0.5rem;
+    }
+    .flex-element {
+        font-size: $large-font-size;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .summary__row {
+        grid-template-columns: 25% 50% 25%;
+    }
+    .avatar-upload {
+        display: flex;
+        justify-content: center;
+    }
+    .gridItem .name {
+        font-size: $medium-font-size;
+    }
+    .gridItem .username {
+        font-size: $small-font-size;
+    }
+    .gridItem .location {
+        font-size: 10px;
+    }
+    .flex__container {
+        justify-content: space-between;
+    }
+    .flex__section {
+        padding: 0.2rem;
+    }
+    .flex-item {
+        font-size: 8px;
+    }
+}

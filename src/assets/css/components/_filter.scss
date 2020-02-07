@@ -1,0 +1,75 @@
+.filter__account {
+    background-color: $background;
+    min-height: 100vh;
+}
+
+.github__image {
+}
+svg {
+    padding-left: 40%;
+    margin: auto;
+    width: 60%;
+}
+.filter__content {
+    padding-top: 15%;
+}
+#myForm {
+    display: flex;
+    justify-content: center;
+}
+
+#myForm label {
+    font-family: $font-family-base;
+    padding-left: 27%;
+    line-height: 5rem;
+    font-size: $very-large-font-size;
+    color: #ffffff;
+}
+
+#myForm input {
+    margin-left: 15%;
+}
+
+#username {
+    background-color: rgb(38, 48, 60);
+    outline: currentcolor none 0px;
+    border: 0px none;
+    border-radius: 0.25rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0px auto;
+    padding: 1rem;
+    color: rgb(121, 184, 255);
+    font-family: SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console,
+        Monaco, monospace;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+    #myForm label {
+        font-family: $font-family-base;
+        padding-left: 30%;
+        line-height: 5rem;
+        font-size: $large-font-size;
+        color: #ffffff;
+    }
+
+    #myForm input {
+        margin-left: 4%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #myForm label {
+        padding-left: 18%;
+    }
+    .filter__content {
+        padding-top: 40%;
+    }
+    #myForm input {
+        margin-left: 5%;
+        max-width: 90%;
+    }
+}
