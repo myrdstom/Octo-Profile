@@ -23,7 +23,7 @@ const FilterProfileView = ({ profile, history }) => {
 
             }
         } else didMountRef.current = true;
-    }, [profile]);
+    }, [history, profile]);
 
     const handleChange = e => setUsername(e.target.value);
 
