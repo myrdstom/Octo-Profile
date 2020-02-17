@@ -4,20 +4,24 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import ProfileSummary from '../Presenter/ProfileSummary';
+import Charts from '../Presenter/Charts';
 
-const ProfileDetailsView = ({ profile, history }) => {
-    const [avatar, setAvatar] = useState('');
-    const [name, setName] = useState('');
-    const [username, setUsername] = useState('');
-    const [location, setLocation] = useState('');
-    const [repositories, setRepositories] = useState('');
-    const [followers, setFollowers] = useState('');
-    const [following, setFollowing] = useState('');
+const ProfileDetailsView = ({ profile, history, repos }) => {
+    const [user, setUser] = useState({
+        avatar: '',
+        name: '',
+        username: '',
+        location: '',
+        repositories: '',
+        followers: '',
+        following: '',
+    });
 
     useEffect(() => {
-        if (profile.profile === null) {
+        if (repos.repos === null && repos.loading === false)  {
             history.push('/');
         } else {
+            console.log(repos, 'instate');
             const {
                 avatar_url,
                 name,
@@ -27,15 +31,34 @@ const ProfileDetailsView = ({ profile, history }) => {
                 followers,
                 following,
             } = profile.profile;
-            setAvatar(avatar_url);
-            setName(name);
-            setUsername(login);
-            setLocation(location);
-            setRepositories(public_repos);
-            setFollowers(followers);
-            setFollowing(following);
+            setUser({
+                avatar: avatar_url,
+                name,
+                username: login,
+                location,
+                repositories: public_repos,
+                followers,
+                following,
+            });
+
         }
+
     }, [history, profile.profile]);
+
+    const get_repos = () => {
+        if(repos.repos) {
+            console.log(repos);
+        }
+    };
+    const {
+        avatar,
+        name,
+        username,
+        location,
+        repositories,
+        followers,
+        following,
+    } = user;
 
 
     return (
@@ -49,6 +72,7 @@ const ProfileDetailsView = ({ profile, history }) => {
                 followers={followers}
                 following={following}
             />
+            <Charts />
         </div>
     );
 };
@@ -59,6 +83,7 @@ ProfileDetailsView.propTypes = {
 
 export const mapStateToProps = state => ({
     profile: state.profile,
+    repos: state.repos,
 });
 
 export default connect(mapStateToProps)(withRouter(ProfileDetailsView));

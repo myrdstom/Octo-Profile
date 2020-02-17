@@ -1,28 +1,27 @@
-import { GET_PROFILE, PROFILE_LOADING } from '../actions/types';
+import { GET_REPOS, PROFILE_LOADING } from '../actions/types';
 
 const initialState = {
-    profile: null,
-    loading: false,
+    repos:null,
+    loading: false
 };
 
-const profileReducer = (state = initialState, action) => {
-    switch (action.type) {
+const reposReducer = (state = initialState, action) =>{
+    switch(action.type) {
         case PROFILE_LOADING:
             return {
                 ...state,
                 loading: true,
             };
-        case GET_PROFILE:
+        case GET_REPOS:
             return {
                 ...state,
-                profile: action.payload,
+                repos: action.payload,
                 loading: false,
             };
-
-
         default:
             return state;
     }
+
 };
 
-export default profileReducer;
+export  default reposReducer;
