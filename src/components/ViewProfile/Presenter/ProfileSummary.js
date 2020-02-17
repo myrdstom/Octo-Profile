@@ -26,7 +26,7 @@ const ProfileSummary = ({
                             </div>
                         </div>
                         <div className="name">{name}</div>
-                        <div className="username">@{username}</div>
+                        <div className="username">@ {username}</div>
                         <div className="location">
                             <span>
                                 <i className="fas fa-map-marker" />
