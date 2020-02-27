@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import ProfileSummary from '../Presenter/ProfileSummary';
 import Charts from '../Presenter/Charts';
 
-const ProfileDetailsView = ({ profile, history }) => {
+const ProfileDetailsView = ({ profile, history, repos }) => {
     const [user, setUser] = useState({
         avatar: '',
         name: '',
@@ -18,9 +18,10 @@ const ProfileDetailsView = ({ profile, history }) => {
     });
 
     useEffect(() => {
-        if (profile.profile === null) {
+        if (repos.repos === null && repos.loading === false)  {
             history.push('/');
         } else {
+            console.log(repos, 'instate');
             const {
                 avatar_url,
                 name,
@@ -39,9 +40,16 @@ const ProfileDetailsView = ({ profile, history }) => {
                 followers,
                 following,
             });
+
         }
+
     }, [history, profile.profile]);
 
+    const get_repos = () => {
+        if(repos.repos) {
+            console.log(repos);
+        }
+    };
     const {
         avatar,
         name,
@@ -51,6 +59,7 @@ const ProfileDetailsView = ({ profile, history }) => {
         followers,
         following,
     } = user;
+
 
     return (
         <div>
@@ -63,7 +72,8 @@ const ProfileDetailsView = ({ profile, history }) => {
                 followers={followers}
                 following={following}
             />
-            <Charts/>
+            <Charts />
+
         </div>
     );
 };
@@ -74,6 +84,7 @@ ProfileDetailsView.propTypes = {
 
 export const mapStateToProps = state => ({
     profile: state.profile,
+    repos: state.repos,
 });
 
 export default connect(mapStateToProps)(withRouter(ProfileDetailsView));
