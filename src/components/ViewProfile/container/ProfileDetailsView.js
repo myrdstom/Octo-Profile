@@ -73,6 +73,7 @@ const ProfileDetailsView = ({ profile, history, repos }) => {
                 following={following}
             />
             <Charts />
+
         </div>
     );
 };
