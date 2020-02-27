@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getProfile } from '../../../redux/actions/profileActions';
+import { getProfile, getRepos } from '../../../redux/actions/profileActions';
 import FilterProfile from '../Presenter/FilterProfile';
 
 const FilterProfileView = ({ profile, history }) => {
@@ -33,6 +33,7 @@ const FilterProfileView = ({ profile, history }) => {
                 console.log('please input something');
             } else {
                 dispatch(getProfile(username));
+                dispatch(getRepos(username));
             }
         }
     };
