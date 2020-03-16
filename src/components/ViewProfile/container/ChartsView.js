@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import Charts from '../Presenter/Charts';
 
-const ChartsView = ({ repos }) => {
+const ChartsView = ({ repos, history }) => {
     let keysArray = [];
     let valuesArray = [];
+
+    useEffect(() => {
+        if (repos.repos === null && repos.loading === false) {
+            history.push('/');
+        }
+    }, [history, repos.repos, repos.loading]);
 
     const get_languages = () => {
         const languageArray = [];
