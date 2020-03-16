@@ -1,6 +1,6 @@
 .profile__summary {
     background-color: $background;
-    min-height: 70vh;
+    height: 800px;
 }
 .summary__row {
     display: grid;
@@ -97,6 +97,9 @@
 }
 
 @media only screen and (max-width: 500px) {
+    .profile__summary {
+        height: 600px;
+    }
     .summary__row {
         grid-template-columns: 25% 50% 25%;
     }

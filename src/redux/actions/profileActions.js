@@ -15,7 +15,6 @@ export const getProfile = user => dispatch => {
                 type: GET_PROFILE,
                 payload: res.data,
             });
-            console.log(res, 'the res');
         })
         .catch(err =>
             dispatch({
