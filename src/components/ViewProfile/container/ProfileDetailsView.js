@@ -4,6 +4,7 @@ import ProfileSummaryView from './ProfileSummaryView';
 import ChartsView from './ChartsView';
 import ReposView from './ReposView';
 
+
 const ProfileDetailsView = () => {
     return (
         <div>
