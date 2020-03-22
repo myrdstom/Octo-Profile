@@ -75,6 +75,12 @@ nav {
     border-radius: 0 50px 50px 0;
 }
 
+@media only screen and (max-width: 900px) {
+    .wrapper {
+        margin-left: -10%;
+    }
+}
+
 @media only screen and (max-width: 500px) {
     .wrapper {
         margin-top: 20%;
