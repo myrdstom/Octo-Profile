@@ -26,7 +26,7 @@ export const getProfile = user => dispatch => {
 
 export const getRepos = user => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`${baseUrl}/${user}/repos`).then(res => {
+    axios.get(`${baseUrl}/${user}/repos?per_page=50`).then(res => {
         dispatch({
             type: GET_REPOS,
             payload: res.data,

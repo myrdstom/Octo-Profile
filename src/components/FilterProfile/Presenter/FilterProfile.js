@@ -25,7 +25,7 @@ const FilterProfile = props => {
                     <div id="myForm">
                         <div className="form-group">
                             <label htmlFor="username">
-                                View any Github Profile
+                                View you're Octo-Profile
                             </label>
                             <input
                                 type="text"

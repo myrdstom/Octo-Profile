@@ -10,6 +10,7 @@ const ReposView = ({ history, repos }) => {
     const [githubRepos, setGihubRepos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [reposPerPage, setReposPerPage] = useState(6);
+    const [window, setWindow] = useState(2);
     const [activeStyle, setActiveStyle] = useState({
         color: '#333',
         bgColor: '#eee',
@@ -53,17 +54,25 @@ const ReposView = ({ history, repos }) => {
         });
     };
 
-    const nextPage = () => {
-        if(currentPage !==5) {
-            setCurrentPage(currentPage + 1)
+    const nextPage = (pageLast) => {
+        if (currentPage !== pageLast) {
+            setCurrentPage(currentPage + 1);
         }
-    }
+    };
 
-    const prevPage = () =>{
-        if(currentPage !== 1) {
-            setCurrentPage(currentPage - 1)
+    const prevPage = () => {
+        if (currentPage !== 1) {
+            setCurrentPage(currentPage - 1);
         }
-    }
+    };
+    const firstPage = (pageOne) => {
+        if (currentPage !== 1) {
+            setCurrentPage(pageOne);
+        }
+    };
+    const lastPage = (pageLast) => {
+        setCurrentPage(pageLast)
+    };
     return (
         <div>
             <Repos repositories={currentRepos} />
@@ -75,6 +84,8 @@ const ReposView = ({ history, repos }) => {
                 currentPage={currentPage}
                 nextPage={nextPage}
                 previousPage={prevPage}
+                firstPage={firstPage}
+                lastPage={lastPage}
             />
         </div>
     );

@@ -95,3 +95,50 @@
 .repo-octicon .octicon{
   margin-bottom: 6px;
 }
+
+@media only screen and (max-width: 800px) {
+
+  .repo-octicon .octicon{
+    margin-bottom: 2px;
+  }
+
+  .repositories{
+    margin-left: -10px;
+  }
+  .repo-cards{
+    display: grid;
+    grid-template-columns: 47% 47%;
+
+  }
+
+  .repo-name {
+    font-size: $medium-font-size;
+  }
+
+  .repo-description{
+    font-size: $very-small-font-size;
+
+  }
+
+}
+
+
+@media only screen and (max-width: 500px) {
+  .repo-octicon .octicon{
+    margin-bottom: 0;
+  }
+  .repo-name {
+    font-size: $small-font-size;
+  }
+
+  .repo-description{
+    font-size: $very-small-font-size;
+
+  }
+  .repo-cards{
+    display: grid;
+    grid-template-columns: 95%;
+
+  }
+
+}
