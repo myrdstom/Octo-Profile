@@ -7,10 +7,8 @@ import PaginationView from './PaginationsView';
 
 const ReposView = ({ history, repos }) => {
     let repositories = [];
-    const [githubRepos, setGihubRepos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [reposPerPage, setReposPerPage] = useState(6);
-    const [window, setWindow] = useState(2);
+    const [reposPerPage] = useState(6);
     const [activeStyle, setActiveStyle] = useState({
         color: '#333',
         bgColor: '#eee',
