@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_LOADING } from '../actions/types';
+import { FETCH_PROFILE, PROFILE_LOADING } from '../actions/types';
 
 const initialState = {
     profile: null,
@@ -12,7 +12,7 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 loading: true,
             };
-        case GET_PROFILE:
+        case FETCH_PROFILE:
             return {
                 ...state,
                 profile: action.payload,
