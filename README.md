@@ -7,6 +7,11 @@ A restyled look at your GitHub profile. It shows your top repositories and  a vi
 ### Hosting
 This application is hosted on [Netlify](https://trusting-snyder-8aafe8.netlify.app/)
 
+# Setup
+- clone the github repo from `https://github.com/myrdstom/Octo-Profile.git`
+- in the root folder run `npm install`
+- start the application with the `npm run start` command
+
 # Demo Video
 
 A brief [video](https://www.loom.com/share/064a7a2dfa15404aaa691a45e1b90b13) showing a user utilizing the application
@@ -22,4 +27,4 @@ A brief [video](https://www.loom.com/share/064a7a2dfa15404aaa691a45e1b90b13) sho
 <img width="1560" alt="Screenshot 2020-03-22 at 19 22 03" src="https://user-images.githubusercontent.com/30922279/77254507-74362b00-6c72-11ea-99d6-f663179ae98d.png">
 
 #### Visualizations
-<img width="1617" alt="Screenshot 2020-03-22 at 19 16 53" src="https://user-images.githubusercontent.com/30922279/77254468-2f11f900-6c72-11ea-9756-78e19df7e765.png">
+<img width="1617" alt="Screenshot 2020-03-22 at 19 16 53" src="https://user-images.githubusercontent.com/30922279/77254468-2f11f900-6c72-11ea-9756-78e19df7e765.png"

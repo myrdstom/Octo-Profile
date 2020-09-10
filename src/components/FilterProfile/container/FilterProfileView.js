@@ -1,25 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { getProfile, getRepos } from '../../../redux/actions/profileActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { useSnackbar } from "react-simple-snackbar";
+import {closeOptions} from '../../../helpers/snackbar.styles';
+import {setRepos, setProfile} from '../../../redux/actions/types';
 import FilterProfile from '../Presenter/FilterProfile';
 
-const FilterProfileView = ({ profile, history }) => {
+const FilterProfileView = ({ history }) => {
     const [username, setUsername] = useState('');
+    const [closeSnackbar] = useSnackbar(closeOptions);
 
     const dispatch = useDispatch();
     const didMountRef = useRef(false);
+    const profile = useSelector((state) => state.profile);
 
     useEffect(() => {
         if (didMountRef.current) {
             if (profile && profile.loading !== true && profile.profile && profile.profile.location) {
                 history.push('/profile');
-
-            } else if(profile.profile === {}) {
+            } else if(profile?.profile?.email === null) {
                 history.push('/');
-                console.log('the profile does not exist');
+                closeSnackbar('this github user does not exist')
 
             }
         } else didMountRef.current = true;
@@ -30,10 +31,10 @@ const FilterProfileView = ({ profile, history }) => {
     const handleKeyPress = e => {
         if (e.keyCode === 13) {
             if (username === '') {
-                console.log('please input something');
+                closeSnackbar('please input something')
             } else {
-                dispatch(getProfile(username));
-                dispatch(getRepos(username));
+                dispatch(setProfile(username));
+                dispatch(setRepos(username));
             }
         }
     };
@@ -53,8 +54,5 @@ FilterProfileView.propTypes = {
     profile: PropTypes.object,
 };
 
-export const mapStateToProps = state => ({
-    profile: state.profile,
-});
 
-export default connect(mapStateToProps)(withRouter(FilterProfileView));
+export default FilterProfileView;

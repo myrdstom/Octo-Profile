@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import ProfileSummary from '../Presenter/ProfileSummary';
 
-const ProfileSummaryView = ({ profile, history, repos }) => {
+const ProfileSummaryView = ({ history }) => {
     const [user, setUser] = useState({
         avatar: '',
         name: '',
@@ -15,6 +14,7 @@ const ProfileSummaryView = ({ profile, history, repos }) => {
         followers: '',
         following: '',
     });
+    const {profile, repos} = useSelector((state) => state);
 
     useEffect(() => {
         if (repos.repos === null && repos.loading === false) {
@@ -71,9 +71,5 @@ ProfileSummaryView.propTypes = {
     profile: PropTypes.object,
 };
 
-const mapStateToProps = state => ({
-    profile: state.profile,
-    repos: state.repos,
-});
 
-export default connect(mapStateToProps)(withRouter(ProfileSummaryView));
+export default ProfileSummaryView;

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Charts from '../Presenter/Charts';
 
-const ChartsView = ({ repos, history }) => {
+const ChartsView = ({  history }) => {
     let keysArray = [];
     let valuesArray = [];
+    const repos = useSelector((state) => state.repos);
 
     useEffect(() => {
         if (repos.repos === null && repos.loading === false) {
@@ -87,8 +87,5 @@ ChartsView.propTypes = {
     repos: PropTypes.object,
 };
 
-const mapStateToProps = state => ({
-    repos: state.repos,
-});
 
-export default connect(mapStateToProps)(withRouter(ChartsView));
+export default ChartsView;

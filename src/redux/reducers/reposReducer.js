@@ -1,4 +1,4 @@
-import { GET_REPOS, PROFILE_LOADING } from '../actions/types';
+import { FETCH_REPOS, PROFILE_LOADING } from '../actions/types';
 
 const initialState = {
     repos:null,
@@ -12,7 +12,7 @@ const reposReducer = (state = initialState, action) =>{
                 ...state,
                 loading: true,
             };
-        case GET_REPOS:
+        case FETCH_REPOS:
             return {
                 ...state,
                 repos: action.payload,
