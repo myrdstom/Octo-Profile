@@ -3,12 +3,16 @@ import { GET_PROFILE, PROFILE_LOADING, FETCH_PROFILE } from '../actions/types';
 import axios from 'axios';
 import { baseUrl, clientId, clientSecret } from '../../config/config';
 
-const getProfile = async url => {
+interface Payload {
+    payload: object;
+}
+
+const getProfile = async (url: string) => {
     const data = await axios.get(url);
     return data.data;
 };
 
-function* loadProfilesFlow(payload ) {
+function* loadProfilesFlow(payload: Payload) {
     try {
         yield put({ type: PROFILE_LOADING });
         const url = `${baseUrl}/${payload.payload}?client_id=${clientId}&client_secret=${clientSecret}`;
@@ -20,5 +24,6 @@ function* loadProfilesFlow(payload ) {
 }
 
 export function* getProfileWatcher() {
+    // @ts-ignore
     yield takeLatest(GET_PROFILE, loadProfilesFlow);
 }

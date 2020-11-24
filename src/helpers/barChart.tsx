@@ -1,4 +1,4 @@
-const barChart = (names=[], stars=[]) => {
+const barChart = (names:Array<string>=[], stars:Array<number> =[]) => {
     return {
         responsive: {
             rules: [{

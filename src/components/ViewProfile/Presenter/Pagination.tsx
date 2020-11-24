@@ -1,7 +1,19 @@
-import React from 'react';
+import React, {FC} from 'react';
 import { Link } from 'react-router-dom';
 
-const PaginationView = ({reposPerPage, totalRepos, paginate, currentPage, nextPage, previousPage, firstPage, lastPage}) => {
+
+interface paginationProps {
+    reposPerPage: number;
+    totalRepos: number;
+    paginate: Function;
+    currentPage: number;
+    nextPage: Function;
+    previousPage: Function;
+    firstPage: Function;
+    lastPage: Function;
+}
+
+const Pagination:  FC<paginationProps>= ({reposPerPage, totalRepos, paginate, currentPage, nextPage, previousPage, firstPage, lastPage}) => {
     const pageNumbers = [];
     for(let i=1; i <= Math.ceil(totalRepos/reposPerPage); i++){
         pageNumbers.push(i)
@@ -40,4 +52,4 @@ const PaginationView = ({reposPerPage, totalRepos, paginate, currentPage, nextPa
 
 }
 
-export default PaginationView;
+export default Pagination;
