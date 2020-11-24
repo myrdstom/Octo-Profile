@@ -1,0 +1,3 @@
+export const SPLICE_REPOS_START_POSITION = 0;
+
+export const SPLICE_REPOS_DELETE_COUNT = 5;

@@ -1,24 +1,24 @@
 import { FETCH_PROFILE, PROFILE_LOADING } from '../actions/types';
+import { BaseAction } from './baseAction';
 
-const initialState = {
+export const initialState = {
     profile: null,
-    loading: false,
+    loading: false
 };
 
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action: BaseAction) => {
     switch (action.type) {
         case PROFILE_LOADING:
             return {
                 ...state,
-                loading: true,
+                loading: true
             };
         case FETCH_PROFILE:
             return {
                 ...state,
                 profile: action.payload,
-                loading: false,
+                loading: false
             };
-
 
         default:
             return state;

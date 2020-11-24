@@ -1,4 +1,4 @@
-const pieChart = (languages=[]) =>{
+const pieChart = (languages = []) => {
     return {
         chart: {
             plotBackgroundColor: null,
@@ -27,12 +27,14 @@ const pieChart = (languages=[]) =>{
                 showInLegend: true
             }
         },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: languages
-        }]
-    }
+        series: [
+            {
+                name: 'Brands',
+                colorByPoint: true,
+                data: languages
+            }
+        ]
+    };
 };
 
 export default pieChart;
