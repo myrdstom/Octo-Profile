@@ -5,13 +5,12 @@ export const FETCH_PROFILE = 'FETCH_PROFILE';
 export const FETCH_REPOS = 'FETCH_REPOS';
 
 
-export const setProfile = (username) => ({
+export const setProfile = (username: string) => ({
     type: GET_PROFILE,
     payload: username
 });
 
-export const setRepos = (username) => ({
+export const setRepos = (username: string) => ({
     type: GET_REPOS,
     payload: username
 });
-

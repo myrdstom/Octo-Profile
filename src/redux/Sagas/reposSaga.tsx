@@ -3,12 +3,16 @@ import { FETCH_REPOS, GET_REPOS, PROFILE_LOADING } from '../actions/types';
 import axios from 'axios';
 import { baseUrl } from '../../config/config';
 
-const getRepos = async url => {
+interface Payload {
+    payload: object;
+}
+
+const getRepos = async (url: string) => {
     const data = await axios.get(url);
     return data.data;
 };
 
-function* loadReposFlow( payload ) {
+function* loadReposFlow(payload: Payload) {
     try {
         yield put({ type: PROFILE_LOADING });
         const url = `${baseUrl}/${payload.payload}/repos?per_page=50`;
@@ -20,5 +24,5 @@ function* loadReposFlow( payload ) {
 }
 
 export function* getRepoWatcher() {
-    yield takeLatest(GET_REPOS, loadReposFlow);
+    yield takeLatest(GET_REPOS as any, loadReposFlow);
 }

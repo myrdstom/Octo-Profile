@@ -1,11 +1,12 @@
 import { FETCH_REPOS, PROFILE_LOADING } from '../actions/types';
+import {BaseAction} from './baseAction';
 
 const initialState = {
     repos:null,
     loading: false
 };
 
-const reposReducer = (state = initialState, action) =>{
+const reposReducer = (state = initialState, action: BaseAction) =>{
     switch(action.type) {
         case PROFILE_LOADING:
             return {
