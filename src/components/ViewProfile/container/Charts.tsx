@@ -12,10 +12,10 @@ interface popular {
     stars: number;
 }
 
+
 interface languageObject {
     [key: string]: number;
 }
-
 const Charts: FC<Props> = ({ history }) => {
     const [repositoryNames, setRepositoryNames] = useState([]);
     const [repositoryStars, setRepositoryStars] = useState([]);
