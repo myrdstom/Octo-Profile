@@ -1,7 +1,8 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { GET_PROFILE, PROFILE_LOADING, FETCH_PROFILE } from '../actions/types';
 import axios from 'axios';
+import { GET_PROFILE, PROFILE_LOADING, FETCH_PROFILE } from '../actions/types';
 import { baseUrl, clientId, clientSecret } from '../../config/config';
+import { ResponseGenerator } from '../../helpers/globalInterfaces';
 
 interface Payload {
     payload: object;
@@ -16,14 +17,13 @@ function* loadProfilesFlow(payload: Payload) {
     try {
         yield put({ type: PROFILE_LOADING });
         const url = `${baseUrl}/${payload.payload}?client_id=${clientId}&client_secret=${clientSecret}`;
-        const data = yield call(getProfile, url);
-        yield put({ type: FETCH_PROFILE, payload: data });
+        const profileData: ResponseGenerator = yield call(getProfile, url);
+        yield put({ type: FETCH_PROFILE, payload: profileData });
     } catch (e) {
-        console.log(e, 'the error');
+        console.warn(e, 'the error');
     }
 }
 
 export function* getProfileWatcher() {
-    // @ts-ignore
-    yield takeLatest(GET_PROFILE, loadProfilesFlow);
+    yield takeLatest(GET_PROFILE as any, loadProfilesFlow);
 }

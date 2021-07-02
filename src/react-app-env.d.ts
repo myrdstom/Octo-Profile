@@ -1,2 +1,2 @@
 /// <reference types="react-scripts" />
-declare module 'react-simple-snackbar'
+declare module 'react-simple-snackbar';

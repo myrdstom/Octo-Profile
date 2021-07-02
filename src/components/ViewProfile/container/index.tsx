@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react';
 
+// @ts-ignore
+import { History, LocationState } from 'history';
 import ProfileSummary from './ProfileSummary';
 import Charts from './Charts';
 import ReposView from './Repos';
-import { History, LocationState } from 'history';
 
 interface Props {
     history: History<LocationState>;
@@ -28,14 +29,12 @@ interface RepoData {
     forks_count: number;
 }
 
-const ProfileDetailsView: FunctionComponent<Props> = props => {
-    return (
-        <div>
-            <ProfileSummary {...props} />
-            <Charts {...props} />
-            <ReposView {...props} />
-        </div>
-    );
-};
+const ProfileDetailsView: FunctionComponent<Props> = props => (
+    <div>
+        <ProfileSummary {...props} />
+        <Charts {...props} />
+        <ReposView {...props} />
+    </div>
+);
 
 export default ProfileDetailsView;

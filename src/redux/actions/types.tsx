@@ -4,7 +4,6 @@ export const PROFILE_LOADING = 'PROFILE_LOADING';
 export const FETCH_PROFILE = 'FETCH_PROFILE';
 export const FETCH_REPOS = 'FETCH_REPOS';
 
-
 export const setProfile = (username: string) => ({
     type: GET_PROFILE,
     payload: username

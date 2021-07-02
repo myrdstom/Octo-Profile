@@ -1,17 +1,19 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+// @ts-ignore
+import { History, LocationState } from 'history';
 import RepoItems, { repoItems } from '../Presenter/RepoItems';
 import Pagination from '../Presenter/Pagination';
-import { History, LocationState } from 'history';
-import {stateProps} from '../../../helpers/globalInterfaces';
+import { stateProps } from '../../../helpers/globalInterfaces';
+import INITIAL_PAGE from '../../../constants/ViewProfile/repos';
 
-interface Props{
+interface Props {
     history: History<LocationState>;
-    repos: stateProps
+    repos: stateProps;
 }
 
-const ReposView: FC<Props>= ({ history }) => {
-    let repositories: repoItems[] = [];
+const ReposView: FC<Props> = ({ history }) => {
+    const repositories: repoItems[] = [];
     const [currentPage, setCurrentPage] = useState(1);
     const [reposPerPage] = useState(6);
 
@@ -25,7 +27,8 @@ const ReposView: FC<Props>= ({ history }) => {
     const getRepos = () => {
         if (repos.repos) {
             const allRepos = repos.repos;
-            for (const repo of allRepos) {
+
+            allRepos.forEach(repo => {
                 if (repo?.language !== null) {
                     repositories.push({
                         id: repo.id,
@@ -35,10 +38,10 @@ const ReposView: FC<Props>= ({ history }) => {
                         size: repo.size,
                         stars: repo.stargazers_count,
                         forks: repo.forks_count,
-                        url: repo.html_url,
+                        url: repo.html_url
                     });
                 }
-            }
+            });
         }
         return repositories;
     };
@@ -58,31 +61,33 @@ const ReposView: FC<Props>= ({ history }) => {
     };
 
     const prevPage = () => {
-        if (currentPage !== 1) {
+        if (currentPage !== INITIAL_PAGE) {
             setCurrentPage(currentPage - 1);
         }
     };
     const firstPage = (pageOne: number) => {
-        if (currentPage !== 1) {
+        if (currentPage !== INITIAL_PAGE) {
             setCurrentPage(pageOne);
         }
     };
     const lastPage = (pageLast: number) => {
-        setCurrentPage(pageLast)
+        setCurrentPage(pageLast);
     };
-    return <div>
-        <RepoItems repositories={currentRepos}/>
-        <Pagination
-            reposPerPage={reposPerPage}
-            totalRepos={repositories.length}
-            paginate={paginate}
-            currentPage={currentPage}
-            nextPage={nextPage}
-            previousPage={prevPage}
-            firstPage={firstPage}
-            lastPage={lastPage}
-        />
-    </div>;
+    return (
+        <div>
+            <RepoItems repositories={currentRepos} />
+            <Pagination
+                reposPerPage={reposPerPage}
+                totalRepos={repositories.length}
+                paginate={paginate}
+                currentPage={currentPage}
+                nextPage={nextPage}
+                previousPage={prevPage}
+                firstPage={firstPage}
+                lastPage={lastPage}
+            />
+        </div>
+    );
 };
 
 export default ReposView;

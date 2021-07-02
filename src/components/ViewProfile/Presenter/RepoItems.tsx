@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import Octicon, { Repo, RepoForked } from '@primer/octicons-react';
 import langColors from '../../../helpers/langColors';
 
@@ -17,32 +17,28 @@ export interface repoItems {
     url: string;
 }
 
-const RepoItems: FC<repoItemsProps | null> = ({repositories}) => {
+const RepoItems: FC<repoItemsProps | null> = ({ repositories }) => {
     return (
         <div>
             <div className="repositories">
                 <div className="repos-title"> Popular Repos</div>
                 <div className="repo-cards">
-                    { repositories?.map((repo: repoItems) => (
+                    {repositories?.map((repo: repoItems) => (
                         <div key={repo.id}>
                             <div className="card-items">
                                 <a href={repo.url} className="repo-link">
                                     <div className="spacing">
-                                        <div className="section1"/>
+                                        <div className="section1" />
                                         <div className="section2">
                                             <div className="repo-top">
                                                 <div className="repo-top-content">
                                                     <div className="repo-name">
                                                         <span className="repo-octicon">
-                                                            <Octicon
-                                                                icon={Repo}
-                                                            />
+                                                            <Octicon icon={Repo} />
                                                         </span>{' '}
                                                         &nbsp;{repo.name}
                                                     </div>
-                                                    <div className="repo-description">
-                                                        {repo.description}
-                                                    </div>
+                                                    <div className="repo-description">{repo.description}</div>
                                                 </div>
                                             </div>
                                             <div className="repo-lower-section">
@@ -50,38 +46,32 @@ const RepoItems: FC<repoItemsProps | null> = ({repositories}) => {
                                                     <span className="repo-language">
                                                         <span
                                                             className="dot"
-                                                            style={{ backgroundColor: langColors[repo.language]}}
+                                                            style={{ backgroundColor: langColors[repo.language] }}
                                                         />
                                                         &nbsp;&nbsp;
                                                         {repo.language}
                                                     </span>{' '}
                                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <span className="repo-stars">
-                                                        <i className="fas fa-star"/>{' '}
-                                                        {repo.stars}{' '}
+                                                        <i className="fas fa-star" /> {repo.stars}{' '}
                                                     </span>
                                                     &nbsp;&nbsp;
                                                     <span className="repo-forks">
-                                                        <Octicon
-                                                            icon={RepoForked}
-                                                        />
+                                                        <Octicon icon={RepoForked} />
                                                         &nbsp;&nbsp;{repo.forks}
                                                     </span>
                                                 </span>
                                                 <span className="right-section">
-                                                    <span className="repo-size">
-                                                        {repo.size} KB
-                                                    </span>
+                                                    <span className="repo-size">{repo.size} KB</span>
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="section3"/>
+                                        <div className="section3" />
                                     </div>
                                 </a>
                             </div>
                         </div>
-                    ))
-                    }
+                    ))}
                 </div>
             </div>
         </div>

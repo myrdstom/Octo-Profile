@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {Props} from '../../../helpers/globalInterfaces';
+import { Props } from '../../../helpers/globalInterfaces';
 
-
-interface stateProps{
+interface stateProps {
     profile: {
         profile: {
             avatar_url: string;
@@ -13,16 +12,18 @@ interface stateProps{
             public_repos: number;
             followers: number;
             following: number;
-            login: string
+            login: string;
         };
         loading: boolean;
     };
     repos: {
-        repos: [{
-            language: string;
-            name: string;
-            stargazers_count: number;
-        }];
+        repos: [
+            {
+                language: string;
+                name: string;
+                stargazers_count: number;
+            }
+        ];
         loading: boolean;
     };
 }
@@ -34,26 +35,16 @@ const ProfileSummary: FC<Props> = ({ history }) => {
         location: '',
         repositories: 0,
         followers: 0,
-        following: 0,
+        following: 0
     });
 
-    const { profile, repos } = useSelector(
-        (state: stateProps) => state,
-    );
+    const { profile, repos } = useSelector((state: stateProps) => state);
 
     useEffect(() => {
         if (repos.repos === null && !repos.loading) {
             history.push('/');
         } else {
-            const {
-                avatar_url,
-                name,
-                login,
-                location,
-                public_repos,
-                followers,
-                following,
-            } = profile.profile;
+            const { avatar_url, name, login, location, public_repos, followers, following } = profile.profile;
 
             setUser({
                 avatar: avatar_url,
@@ -62,20 +53,12 @@ const ProfileSummary: FC<Props> = ({ history }) => {
                 location,
                 repositories: public_repos,
                 followers,
-                following,
+                following
             });
         }
     }, [history, repos.repos, repos.loading, profile.profile]);
 
-    const {
-        avatar,
-        name,
-        username,
-        location,
-        repositories,
-        followers,
-        following,
-    } = user;
+    const { avatar, name, username, location, repositories, followers, following } = user;
 
     return (
         <div className="profile__summary">
@@ -85,11 +68,7 @@ const ProfileSummary: FC<Props> = ({ history }) => {
                     <div className="gridItem">
                         <div className="avatar-upload">
                             <div className="avatar-preview">
-                                <img
-                                    className="profile__avatar"
-                                    src={avatar}
-                                    alt=""
-                                />
+                                <img className="profile__avatar" src={avatar} alt="" />
                             </div>
                         </div>
                         <div className="name">{name}</div>
@@ -103,21 +82,15 @@ const ProfileSummary: FC<Props> = ({ history }) => {
                         </div>
                         <div className="flex__container">
                             <div className="flex__section">
-                                <span className="flex-element">
-                                    {repositories}
-                                </span>
+                                <span className="flex-element">{repositories}</span>
                                 <span className="flex-item">REPOSITORIES</span>
                             </div>
                             <div className="flex__section">
-                                <span className="flex-element">
-                                    {followers}
-                                </span>
+                                <span className="flex-element">{followers}</span>
                                 <span className="flex-item">FOLLOWERS</span>
                             </div>
                             <div className="flex__section">
-                                <span className="flex-element">
-                                    {following}
-                                </span>
+                                <span className="flex-element">{following}</span>
                                 <span className="flex-item">FOLLOWING</span>
                             </div>
                         </div>

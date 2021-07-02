@@ -1,102 +1,101 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import pieChart from '../../../helpers/pieChart';
 import barChart from '../../../helpers/barChart';
-import {stateProps, Props} from '../../../helpers/globalInterfaces';
+import { stateProps, Props } from '../../../helpers/globalInterfaces';
+import { SPLICE_REPOS_START_POSITION, SPLICE_REPOS_DELETE_COUNT } from '../../../constants/ViewProfile/charts';
 
 interface popular {
     name: string;
     stars: number;
 }
 
+
+interface languageObject {
+    [key: string]: number;
+}
 const Charts: FC<Props> = ({ history }) => {
-    let keysArray = [];
-    let valuesArray = [];
-    const repos = useSelector(
-        (state: stateProps) => state.repos,
-    );
+    const [repositoryNames, setRepositoryNames] = useState([]);
+    const [repositoryStars, setRepositoryStars] = useState([]);
+    const repos = useSelector((state: stateProps) => state.repos);
+
+    const names = [] as any;
+    const stars = [] as any;
 
     useEffect(() => {
         if (repos.repos === null && !repos.loading) {
             history.push('/');
         }
-    }, [history, repos.repos, repos.loading]);
+        getPopularRepos();
+    }, [history, repos]);
 
-    const get_languages = () => {
-        const languageArray: Array<string> = [];
-        let chars:any = {};
+    const getLanguages = () => {
+        const userLanguages: Array<string> = [];
+        const languages: languageObject = {};
         if (repos.repos) {
             const allRepos = repos.repos;
-            for (const repo of allRepos) {
-                languageArray.push(repo.language);
-            }
-            for (let char of languageArray) {
-                if (!chars[char]) {
-                    chars[char] = 1;
-                } else {
-                    chars[char]++;
+            allRepos.forEach(repo => {
+                if (repo.language !== null) {
+                    userLanguages.push(repo.language);
                 }
-            }
+            });
+
+            userLanguages.forEach(userLanguage => {
+                if (!languages[userLanguage]) {
+                    languages[userLanguage] = 1;
+                } else {
+                    languages[userLanguage]++;
+                }
+            });
         }
-        Object.keys(chars).forEach((key) => {
-            keysArray.push(key);
-            valuesArray.push(chars[key]);
+
+        const sortedUserLanguages: { name: string; y: number }[] = [];
+
+        Object.entries(languages).forEach(value => {
+            sortedUserLanguages.push({ name: value[0], y: value[1] });
         });
-        let finalArray = [];
 
-        for (const element in chars) {
-            if (element !== 'null') {
-                finalArray.push({ name: `${element}`, y: chars[element] });
-            }
-        }
-        return finalArray;
+        return sortedUserLanguages;
     };
-    let names: Array<string> = [];
-    let stars: Array<number> = [];
 
-    const get_popularity = () => {
-        const popularArray: popular[] = [];
+    const getPopularRepos = () => {
+        const popularRepos: popular[] = [];
         if (repos.repos) {
             const allRepos = repos.repos;
-            for (const repo of allRepos) {
-                popularArray.push({
+            allRepos.forEach(repo => {
+                popularRepos.push({
                     name: repo.name,
-                    stars: repo.stargazers_count,
+                    stars: repo.stargazers_count
                 });
-            }
+            });
         }
-        const sortedArray = popularArray.sort(function(a, b) {
-            return b.stars - a.stars;
+        const sortPopularRepos: popular[] = popularRepos
+            .sort((a, b) => b.stars - a.stars)
+            .splice(SPLICE_REPOS_START_POSITION, SPLICE_REPOS_DELETE_COUNT);
+
+        sortPopularRepos.forEach(popularRepo => {
+            names.push(popularRepo.name);
+            stars.push(popularRepo.stars);
         });
 
-        const cleanedArray: any = sortedArray.splice(0, 5);
-        const listContacts = function() {
-            for (let i = 0; i < cleanedArray.length; i++) {
-                names.push(cleanedArray[i].name);
-                stars.push(cleanedArray[i].stars);
-            }
-        };
-        listContacts();
+        setRepositoryNames(names);
+        setRepositoryStars(stars);
     };
-    get_popularity();
-    const languages = get_languages();
+
     return (
         <div>
             <div className="charts">
                 <div className="charts-container">
                     <div className="card">
                         <div className="pie-chart">
-                            <HighchartsReact
-                                highcharts={Highcharts}
-                                options={pieChart(languages)}
-                            />
+                            <HighchartsReact highcharts={Highcharts} options={pieChart(getLanguages())} />
                         </div>
                         <div className="pie-chart">
                             <HighchartsReact
                                 highcharts={Highcharts}
-                                options={barChart(names, stars)}
+                                options={barChart(repositoryNames, repositoryStars)}
                             />
                         </div>
                     </div>

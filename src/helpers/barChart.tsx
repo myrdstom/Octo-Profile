@@ -1,16 +1,18 @@
-const barChart = (names:Array<string>=[], stars:Array<number> =[]) => {
+const barChart = (names: Array<string> = [], stars: Array<number> = []) => {
     return {
         responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 400
-                },
-                chartOptions: {
-                    legend: {
-                        enabled: false
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 400
+                    },
+                    chartOptions: {
+                        legend: {
+                            enabled: false
+                        }
                     }
                 }
-            }]
+            ]
         },
         chart: {
             type: 'column'
@@ -30,7 +32,8 @@ const barChart = (names:Array<string>=[], stars:Array<number> =[]) => {
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            pointFormat:
+                '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
                 '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
@@ -42,15 +45,13 @@ const barChart = (names:Array<string>=[], stars:Array<number> =[]) => {
                 borderWidth: 0
             }
         },
-        series: [{
-            name: 'Names',
-            data: stars
-
-        }]
-    }
+        series: [
+            {
+                name: 'Names',
+                data: stars
+            }
+        ]
+    };
 };
 
-
-
 export default barChart;
-

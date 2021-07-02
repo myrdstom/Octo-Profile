@@ -11,6 +11,7 @@ import { useSnackbar } from 'react-simple-snackbar';
 import { closeOptions } from '../../helpers/snackbar.styles';
 import { setRepos, setProfile } from '../../redux/actions/types';
 import { stateProps, Props, Profile } from '../../helpers/globalInterfaces';
+import { DEFAULT_USERNAME } from '../../constants/FilterProfile';
 
 const FilterProfile: FunctionComponent<Props> = ({ history }) => {
     const [username, setUsername] = useState('');
@@ -38,10 +39,10 @@ const FilterProfile: FunctionComponent<Props> = ({ history }) => {
         setUsername(e.target.value);
 
     const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.keyCode === 13 && username !== '') {
+        if (e.keyCode === 13 && username !== DEFAULT_USERNAME) {
             dispatch(setProfile(username));
             dispatch(setRepos(username));
-        } else if (e.keyCode === 13 && username === '') {
+        } else if (e.keyCode === 13 && username === DEFAULT_USERNAME) {
             closeSnackbar('please input something');
         }
     };
@@ -68,9 +69,7 @@ const FilterProfile: FunctionComponent<Props> = ({ history }) => {
 
                         <div id="myForm">
                             <div className="form-group">
-                                <label htmlFor="username">
-                                    View you're Octo-Profile
-                                </label>
+                                <label htmlFor="username">View your Octo-Profile</label>
                                 <input
                                     type="text"
                                     className="form-control profile__input"
