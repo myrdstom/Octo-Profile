@@ -5,7 +5,6 @@ export interface Props {
 }
 
 export interface stateProps {
-
     repos: {
         repos: RepoData[] | null;
         loading: boolean;

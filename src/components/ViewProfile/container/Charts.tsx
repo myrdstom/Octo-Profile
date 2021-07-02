@@ -12,7 +12,6 @@ interface popular {
     stars: number;
 }
 
-
 interface languageObject {
     [key: string]: number;
 }
@@ -90,7 +89,7 @@ const Charts: FC<Props> = ({ history }) => {
                 <div className="charts-container">
                     <div className="card">
                         <div className="pie-chart">
-                            <HighchartsReact highcharts={Highcharts} options={pieChart(getLanguages())} />
+                            <HighchartsReact highcharts={Highcharts} options={pieChart(getLanguages() as any)} />
                         </div>
                         <div className="pie-chart">
                             <HighchartsReact

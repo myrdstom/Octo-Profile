@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from 'react';
-
-// @ts-ignore
-import { History, LocationState } from 'history';
+import { History } from 'history';
 import ProfileSummary from './ProfileSummary';
 import Charts from './Charts';
 import ReposView from './Repos';
 
 interface Props {
-    history: History<LocationState>;
+    history: History;
     repos: {
         repos: {
             repos: RepoData[] | null;
