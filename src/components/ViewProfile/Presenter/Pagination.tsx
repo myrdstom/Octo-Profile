@@ -28,7 +28,6 @@ const Pagination: FC<paginationProps> = ({
     }
     const pageOne = pageNumbers[0];
     const pageLast = pageNumbers[pageNumbers.length - 1];
-    console.log(pageLast);
 
     return (
         <nav>

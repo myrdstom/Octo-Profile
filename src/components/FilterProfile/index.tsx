@@ -1,11 +1,4 @@
-import React, {
-    FunctionComponent,
-    useEffect,
-    useRef,
-    useState,
-    KeyboardEvent,
-    ChangeEvent,
-} from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState, KeyboardEvent, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'react-simple-snackbar';
 import { closeOptions } from '../../helpers/snackbar.styles';
@@ -35,8 +28,7 @@ const FilterProfile: FunctionComponent<Props> = ({ history }) => {
         } else didMountRef.current = true;
     }, [history, repos.loading, profile, username, closeSnackbar]);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-        setUsername(e.target.value);
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value);
 
     const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.keyCode === 13 && username !== DEFAULT_USERNAME) {
