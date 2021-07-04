@@ -1,4 +1,6 @@
-export const baseUrl: string = 'https://api.github.com/users';
-export const clientId: string = 'Iv1.3257a9819dfbb01e';
+const { REACT_APP_BASE_URL, REACT_APP_CLIENT_SECRET, REACT_APP_CLIENT_ID } = process.env;
 
-export const clientSecret: string = 'f5f4e39e3190e9c1f9d04c829306d3dca9f7679f';
+export const baseUrl: any = REACT_APP_BASE_URL;
+export const clientId: any = REACT_APP_CLIENT_ID;
+
+export const clientSecret: any = REACT_APP_CLIENT_SECRET;
