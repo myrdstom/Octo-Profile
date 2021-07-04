@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Props } from '../../../helpers/globalInterfaces';
+import './profileSummary.css';
 
 interface stateProps {
     profile: {

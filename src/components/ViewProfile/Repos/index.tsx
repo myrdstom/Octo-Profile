@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { History } from 'history';
-import RepoItems, { repoItems } from '../Presenter/RepoItems';
-import Pagination from '../Presenter/Pagination';
+import RepoItems, { repoItems } from './RepoItems';
+import Pagination from './Pagination';
 import { stateProps } from '../../../helpers/globalInterfaces';
 import INITIAL_PAGE from '../../../constants/ViewProfile/repos';
 

@@ -6,6 +6,7 @@ import pieChart from '../../../helpers/pieChart';
 import barChart from '../../../helpers/barChart';
 import { stateProps, Props } from '../../../helpers/globalInterfaces';
 import { SPLICE_REPOS_START_POSITION, SPLICE_REPOS_DELETE_COUNT } from '../../../constants/ViewProfile/charts';
+import './charts.css';
 
 interface popular {
     name: string;

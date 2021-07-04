@@ -5,6 +5,7 @@ import { closeOptions } from '../../helpers/snackbar.styles';
 import { setRepos, setProfile } from '../../redux/actions/types';
 import { stateProps, Props, Profile } from '../../helpers/globalInterfaces';
 import { DEFAULT_USERNAME } from '../../constants/FilterProfile';
+import './filter.css';
 
 const FilterProfile: FunctionComponent<Props> = ({ history }) => {
     const [username, setUsername] = useState('');

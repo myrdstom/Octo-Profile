@@ -1,0 +1,14 @@
+:root {
+    --font-family-base: 'Poppins', helvetica, sans-serif;
+    --body-font: 'Rubik', helvetica, sans-serif;
+    --background: #1a1e22;
+    --light-background: #24292e;
+    --optional-background: #eee;
+    --blue: #0071f3;
+    --light-blue: #c8e1ff;
+    --very-large-font-size: 28px;
+    --large-font-size: 20px;
+    --medium-font-size: 14px;
+    --small-font-size: 12px;
+    --very-small-font-size: 8px;
+}
