@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+import './pagination.css';
 
 interface paginationProps {
     reposPerPage: number;

@@ -16,7 +16,6 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "netlify-cli": "^2.30.0",
-    "node-sass": "^6.0.1",
     "npm": "^6.13.6",
     "path": "^0.12.7",
     "react": "^17.0.2",
@@ -38,7 +37,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "lint:css": "stylelint '**/*.css' --fix",
+    "lint:ts": "eslint src --fix",
+    "lint:check-css": "stylelint '**/*.css'",
+    "lint:check-ts": "eslint src",
+    "precommitHook": "yarn run lint:ts && yarn run lint:css",
     "prepare": "husky install"
   },
   "resolutions": {
@@ -69,11 +72,15 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-prettier": "^1.2.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint"
+      "pre-commit": "yarn run precommitHook"
     }
   },
   "browserslist": {

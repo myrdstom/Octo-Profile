@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Octicon, { Repo, RepoForked } from '@primer/octicons-react';
 import langColors from '../../../helpers/langColors';
+import './repoItems.css';
 
 export interface repoItemsProps {
     repositories: repoItems[] | null;

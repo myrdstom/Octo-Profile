@@ -1,0 +1,85 @@
+@import '../../../constants/constants.css';
+
+.charts {
+    min-height: 40vh;
+    background-color: var(--optional-background);
+}
+
+/* Cards */
+.card {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+    position: relative;
+    top: -100px;
+}
+
+.pie-chart {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    max-width: 500px;
+    background-color: rgb(255, 255, 255);
+    margin-left: 20px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.pie-chart:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+}
+
+.pie-chart svg {
+    width: 80%;
+    padding: 0;
+}
+.highcharts-credits {
+    display: none;
+}
+.highcharts-background {
+    max-width: 80%;
+}
+
+tspan {
+    font-family: var(--font-family-base);
+}
+
+@media only screen and (max-width: 900px) {
+    .card {
+        display: block;
+        left: 30px;
+    }
+
+    .pie-chart {
+        display: inline;
+        max-width: 300px;
+    }
+    .pie-chart svg {
+        width: 90%;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .card {
+        display: block;
+        left: 0;
+        margin-left: 5%;
+    }
+
+    .pie-chart {
+        display: block;
+        max-width: 300px;
+        margin-top: 10%;
+    }
+    .pie-chart svg {
+        width: 100%;
+        padding: 0;
+    }
+}

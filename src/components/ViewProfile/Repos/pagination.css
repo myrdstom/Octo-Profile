@@ -1,6 +1,8 @@
+@import '../../../constants/constants.css';
+
 nav {
     background-color: #eee;
-    font-family: 'Poppins', Helvetica, sans-serif;
+    font-family: var(--font-family-base);
     -webkit-box-align: center;
     -webkit-box-pack: center;
     display: -webkit-box;
@@ -10,7 +12,7 @@ nav {
     bottom: 0;
     transform: translate(10%, -50%);
     padding: 5px 15px 5px 15px;
-    background-color: #eee;
+    background-color: var(--optional-background);
 }
 
 .wrapper li {
@@ -19,7 +21,7 @@ nav {
 }
 
 .page-link {
-    background-color: #eee;
+    background-color: var(--optional-background);
     text-align: center;
     text-decoration: none;
     color: #707070;
@@ -29,20 +31,20 @@ nav {
     width: 50px;
     height: 50px;
     line-height: 55px;
-    border: 1px solid $background;;
+    border: 1px solid var(--background);
 }
 
 .page-link:hover,
 .active {
     color: #fff;
-    background-color: $background;;
+    background-color: var(--background);
 }
 
 .fa-angle-left,
 .fa-angle-right,
 .fa-angle-double-left,
 .fa-angle-double-right {
-    background-color: #eee;
+    background-color: var(--optional-background);
     text-align: center;
     text-decoration: none;
     color: #707070;
@@ -52,7 +54,7 @@ nav {
     width: 50px;
     height: 50px;
     line-height: 55px;
-    border: 1px solid $background;;
+    border: 1px solid var(--background);
 }
 
 @media only screen and (max-width: 900px) {
@@ -88,6 +90,6 @@ nav {
     .fa-angle-double-left:hover,
     .fa-angle-double-right:hover {
         color: #fff;
-        background-color: $background;
+        background-color: var(--background);
     }
 }

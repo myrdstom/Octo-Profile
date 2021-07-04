@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import SnackbarProvider from 'react-simple-snackbar';
 import store from './redux/store/combineStore';
 import FilterProfile from './components/FilterProfile';
-import ViewProfile from './components/ViewProfile/container';
+import ViewProfile from './components/ViewProfile';
 
 function App() {
     return (

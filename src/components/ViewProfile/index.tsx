@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
+
 import { History } from 'history';
-import ProfileSummary from './ProfileSummary';
+import ProfileSummary from './profileSummary';
 import Charts from './Charts';
 import ReposView from './Repos';
 

@@ -1,10 +1,10 @@
+@import '../../constants/constants.css';
+
 .filter__account {
-    background-color: $background;
+    background-color: var(--background);
     min-height: 100vh;
 }
 
-.github__image {
-}
 .filter__content svg {
     padding-left: 42%;
     margin: auto;
@@ -19,11 +19,11 @@
 }
 
 #myForm label {
-    font-family: $font-family-base;
+    font-family: var(--font-family-base);
     padding-left: 27%;
     line-height: 5rem;
-    font-size: $very-large-font-size;
-    color: #ffffff;
+    font-size: var(--very-large-font-size);
+    color: #fff;
 }
 
 #myForm input {
@@ -32,16 +32,15 @@
 
 #username {
     background-color: rgb(38, 48, 60);
-    outline: currentcolor none 0px;
-    border: 0px none;
+    outline: currentColor none 0;
+    border: 0 none;
     border-radius: 0.25rem;
     width: 100%;
     max-width: 500px;
-    margin: 0px auto;
+    margin: 0 auto;
     padding: 1rem;
     color: rgb(121, 184, 255);
-    font-family: SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console,
-        Monaco, monospace;
+    font-family: SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console, Monaco, monospace;
     font-size: 1.5rem;
     font-weight: 400;
     text-align: center;
@@ -49,11 +48,11 @@
 
 @media only screen and (max-width: 800px) {
     #myForm label {
-        font-family: $font-family-base;
+        font-family: var(--font-family-base);
         padding-left: 30%;
         line-height: 5rem;
-        font-size: $large-font-size;
-        color: #ffffff;
+        font-size: var(--large-font-size);
+        color: #fff;
     }
 
     #myForm input {

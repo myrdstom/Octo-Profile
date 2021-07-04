@@ -1,5 +1,7 @@
+@import '../../../constants/constants.css';
+
 .profile__summary {
-    background-color: $background;
+    background-color: var(--background);
     height: 800px;
 }
 .summary__row {
@@ -12,26 +14,26 @@
     padding-left: 35%;
 }
 .gridItem .name {
-    font-size: $very-large-font-size;
-    font-family: $font-family-base;
-    color: #ffffff;
+    font-size: var(--very-large-font-size);
+    font-family: var(--font-family-base);
+    color: #fff;
     line-height: 5rem;
     display: flex;
     justify-content: center;
 }
 
 .gridItem .username {
-    font-size: $large-font-size;
-    font-family: $font-family-base;
-    color: $blue;
+    font-size: var(--large-font-size);
+    font-family: var(--font-family-base);
+    color: var(--blue);
     display: flex;
     justify-content: center;
 }
 
 .gridItem .location {
-    font-size: $medium-font-size;
-    font-family: $font-family-base;
-    color: $light-blue;
+    font-size: var(--medium-font-size);
+    font-family: var(--font-family-base);
+    color: var(--light-blue);
     line-height: 5rem;
     display: flex;
     justify-content: center;
@@ -42,8 +44,8 @@
     height: 155px;
     position: relative;
     border-radius: 100%;
-    border: 6px solid $blue;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    border: 6px solid var(--blue);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .profile__avatar {
@@ -60,7 +62,7 @@
 .flex__section {
     display: flex;
     flex-direction: column;
-    background-color: $light-background;
+    background-color: var(--light-background);
     color: white;
     padding: 3% 8%;
     border-radius: 2%;
@@ -68,14 +70,14 @@
 .flex-element {
     display: flex;
     justify-content: space-evenly;
-    font-family: $font-family-base;
-    font-size: $very-large-font-size;
+    font-family: var(--font-family-base);
+    font-size: var(--very-large-font-size);
 }
 
 .flex-item {
-    font-family: $font-family-base;
-    font-size: $small-font-size;
-    color: $light-blue;
+    font-family: var(--font-family-base);
+    font-size: var(--small-font-size);
+    color: var(--light-blue);
 }
 
 @media only screen and (max-width: 900px) {
@@ -92,7 +94,7 @@
         padding: 0.5rem;
     }
     .flex-element {
-        font-size: $large-font-size;
+        font-size: var(--large-font-size);
     }
 }
 
@@ -108,10 +110,10 @@
         justify-content: center;
     }
     .gridItem .name {
-        font-size: $medium-font-size;
+        font-size: var(--medium-font-size);
     }
     .gridItem .username {
-        font-size: $small-font-size;
+        font-size: var(--small-font-size);
     }
     .gridItem .location {
         font-size: 10px;
