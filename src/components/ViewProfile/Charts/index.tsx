@@ -13,7 +13,7 @@ interface popular {
     stars: number;
 }
 
-interface languageObject {
+interface languageType {
     [key: string]: number;
 }
 const Charts: FC<Props> = ({ history }) => {
@@ -33,7 +33,7 @@ const Charts: FC<Props> = ({ history }) => {
 
     const getLanguages = () => {
         const userLanguages: Array<string> = [];
-        const languages: languageObject = {};
+        const languages: languageType = {};
         if (repos.repos) {
             const allRepos = repos.repos;
             allRepos.forEach(repo => {

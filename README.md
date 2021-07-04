@@ -8,7 +8,10 @@ A restyled look at your GitHub profile. It shows your top repositories and  a vi
 This application is hosted on [Netlify](https://trusting-snyder-8aafe8.netlify.app/)
 
 # Setup
-- clone the github repo from `https://github.com/myrdstom/Octo-Profile.git`
+- Go to the [Github developer website](`https://github.com/settings/applications/new`)
+- Obtain a `client Id` and `client secret`
+- `cp .env.example  .env` 
+- clone the Github repo from `https://github.com/myrdstom/Octo-Profile.git`
 - in the root folder run `npm install`
 - start the application with the `npm run start` command
 
