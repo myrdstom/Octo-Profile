@@ -4,7 +4,7 @@ import './pagination.css';
 
 interface paginationProps {
     reposPerPage: number;
-    totalRepos: number;
+    totalRepos: [];
     paginate: Function;
     currentPage: number;
     nextPage: Function;
@@ -24,7 +24,7 @@ const Pagination: FC<paginationProps> = ({
     lastPage
 }) => {
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(totalRepos / reposPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(totalRepos.length / reposPerPage); i++) {
         pageNumbers.push(i);
     }
     const pageOne = pageNumbers[0];

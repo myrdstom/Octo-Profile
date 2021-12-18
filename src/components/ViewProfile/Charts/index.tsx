@@ -19,13 +19,13 @@ interface languageType {
 const Charts: FC<Props> = ({ history }) => {
     const [repositoryNames, setRepositoryNames] = useState([]);
     const [repositoryStars, setRepositoryStars] = useState([]);
-    const repos = useSelector((state: stateProps) => state.repos);
+    const { repos, loading } = useSelector((state: stateProps) => state.repos);
 
     const names = [] as any;
     const stars = [] as any;
 
     useEffect(() => {
-        if (repos.repos === null && !repos.loading) {
+        if (repos === null && !loading) {
             history.push('/');
         }
         getPopularRepos();
@@ -34,9 +34,8 @@ const Charts: FC<Props> = ({ history }) => {
     const getLanguages = () => {
         const userLanguages: Array<string> = [];
         const languages: languageType = {};
-        if (repos.repos) {
-            const allRepos = repos.repos;
-            allRepos.forEach(repo => {
+        if (repos) {
+            repos.forEach(repo => {
                 if (repo.language !== null) {
                     userLanguages.push(repo.language);
                 }
@@ -62,9 +61,8 @@ const Charts: FC<Props> = ({ history }) => {
 
     const getPopularRepos = () => {
         const popularRepos: popular[] = [];
-        if (repos.repos) {
-            const allRepos = repos.repos;
-            allRepos.forEach(repo => {
+        if (repos) {
+            repos.forEach(repo => {
                 popularRepos.push({
                     name: repo.name,
                     stars: repo.stargazers_count
