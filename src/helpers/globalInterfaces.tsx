@@ -6,12 +6,12 @@ export interface Props {
 
 export interface stateProps {
     repos: {
-        repos: RepoData[] | null;
+        repos: RepoData[] | [];
         loading: boolean;
     };
 }
 
-interface RepoData {
+export interface RepoData {
     id: string;
     description: string;
     language: string;

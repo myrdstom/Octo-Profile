@@ -1,53 +1,33 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { History } from 'history';
-import RepoItems, { repoItems } from './RepoItems';
+import RepoItems from './RepoItems';
 import Pagination from './Pagination';
 import { stateProps } from '../../../helpers/globalInterfaces';
 import INITIAL_PAGE from '../../../constants/ViewProfile/repos';
 
 interface Props {
     history: History;
-    repos: stateProps;
 }
 
 const ReposView: FC<Props> = ({ history }) => {
-    const repositories: repoItems[] = [];
     const [currentPage, setCurrentPage] = useState(1);
     const [reposPerPage] = useState(6);
+    const [currentRepos, setCurrentRepos] = useState([]);
 
-    const repos = useSelector((state: stateProps) => state.repos);
+    const { repos, loading } = useSelector((state: stateProps) => state.repos);
 
     useEffect(() => {
-        if (repos.repos === null && !repos.loading) {
+        if (repos === null && !loading) {
             history.push('/');
         }
-    }, [history, repos.repos, repos.loading]);
-    const getRepos = () => {
-        if (repos.repos) {
-            const allRepos = repos.repos;
+    }, [history, repos, loading]);
 
-            allRepos.forEach(repo => {
-                if (repo?.language !== null) {
-                    repositories.push({
-                        id: repo.id,
-                        name: repo.name,
-                        description: repo.description,
-                        language: repo.language,
-                        size: repo.size,
-                        stars: repo.stargazers_count,
-                        forks: repo.forks_count,
-                        url: repo.html_url
-                    });
-                }
-            });
-        }
-        return repositories;
-    };
-    getRepos();
-    const indexOfLastRepo = currentPage * reposPerPage;
-    const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
-    const currentRepos = repositories.slice(indexOfFirstRepo, indexOfLastRepo);
+    useEffect(() => {
+        const indexOfLastRepo = currentPage * reposPerPage;
+        const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
+        setCurrentRepos(repos?.slice(indexOfFirstRepo, indexOfLastRepo) as any);
+    }, [repos]);
 
     const paginate = (pageNumber: number) => {
         setCurrentPage(pageNumber);
@@ -72,12 +52,13 @@ const ReposView: FC<Props> = ({ history }) => {
     const lastPage = (pageLast: number) => {
         setCurrentPage(pageLast);
     };
+
     return (
         <div>
             <RepoItems repositories={currentRepos} />
             <Pagination
                 reposPerPage={reposPerPage}
-                totalRepos={repositories.length}
+                totalRepos={repos as any}
                 paginate={paginate}
                 currentPage={currentPage}
                 nextPage={nextPage}

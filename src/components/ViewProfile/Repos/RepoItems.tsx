@@ -18,7 +18,8 @@ export interface repoItems {
     url: string;
 }
 
-const RepoItems: FC<repoItemsProps | null> = ({ repositories }) => {
+// @ts-ignore
+const RepoItems: FC<repoItemsProps | any> = ({ repositories }) => {
     return (
         <div>
             <div className="repositories">
