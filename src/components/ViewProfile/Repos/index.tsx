@@ -27,7 +27,7 @@ const ReposView: FC<Props> = ({ history }) => {
         const indexOfLastRepo = currentPage * reposPerPage;
         const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
         setCurrentRepos(repos?.slice(indexOfFirstRepo, indexOfLastRepo) as any);
-    }, [repos]);
+    }, [repos, currentPage]);
 
     const paginate = (pageNumber: number) => {
         setCurrentPage(pageNumber);
